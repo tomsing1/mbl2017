@@ -47,6 +47,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         aws.instance_type = instance['type']
         aws.ami = instance['ami']
         aws.security_groups = ["sg-38412d46"]
+        aws.iam_instance_profile_name = "EC2ReadWriteDataBucket"
         aws.subnet_id = 'subnet-3a46bf60'
         aws.tags = {
           'Name' => instance['name'],
