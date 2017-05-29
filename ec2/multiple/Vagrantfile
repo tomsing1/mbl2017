@@ -2,6 +2,7 @@
 require 'vagrant-aws'
 require 'yaml'
 project = "mbl2017"
+poc = "mblneuro2017@gmail.com"
 
 # Read YAML file with instance information
 instances = YAML.load_file(File.join(File.dirname(__FILE__), 'instances.yml'))
