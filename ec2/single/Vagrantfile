@@ -1,0 +1,51 @@
+# Require the AWS provider plugin
+require 'vagrant-aws'
+
+instance = "mbl2017-instance"
+project = "mbl2017"
+poc = "mblneuro2017@gmail.com"
+
+# Create and configure the AWS instance(s)
+Vagrant.configure('2') do |config|
+
+  # Use dummy AWS box
+  config.vm.box = 'dummy'
+  config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+
+  # Specify AWS provider configuration
+  config.vm.provider 'aws' do |aws, override|
+
+    # Specify SSH keypair to use
+    aws.secret_access_key = ENV['AWS_SECRET']
+    aws.access_key_id = ENV['AWS_KEY']
+    aws.keypair_name = ENV['AWS_KEYNAME']
+    aws.security_groups = ["sg-38412d46"]
+    # Specify region, AMI ID, and security group(s)
+    aws.region = 'us-east-1'
+    aws.ami = 'ami-80861296' # Ubuntu 16.4: ami-80861296; BioC 3.5: ami-d47d09c2
+    aws.instance_type = 't2.micro'
+    # aws.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 100 }]
+    aws.subnet_id = 'subnet-3a46bf60'
+    aws.associate_public_ip = true
+    aws.terminate_on_shutdown = true
+
+    # Specify username and private key path
+    override.ssh.username = 'ubuntu'
+    override.ssh.private_key_path = ENV['AWS_KEYPATH']
+    # Reminder: connect to RStudio server at port 80
+    #   username: ubuntu (or others set up in bootstrap.sh)
+    #   password: bioc
+    
+    # Tags
+    aws.tags = {
+      'Name' => "#{instance}",
+      'env' => 'dev',
+      'project' => "#{project}",
+      'poc' => "#{poc}"
+    }
+
+    # Boostrapping
+    # aws.user_data = File.read("bootstrap.sh")
+
+  end
+end
