@@ -1,9 +1,9 @@
 ---
 - name: "instance-01"
   type: "t2.micro"
-  ami: "ami-80861296"
+  ami: "ami-a3400bb5"
   user: "ubuntu"
 - name: "instance-02"
   type: "t2.micro"
-  ami: "ami-80861296"
+  ami: "ami-a3400bb5""
   user: "ubuntu"
