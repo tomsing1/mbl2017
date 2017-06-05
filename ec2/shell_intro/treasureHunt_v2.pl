@@ -12,10 +12,7 @@ use POSIX;
 # There MUST, and SHALL be, real treasure. You can describe where the treasure is 
 # hidden here:
 
-my $theTreasure = "You've found my treasure! Quietly stand up, head out of the classroom 
-and towards the Swope dining room. Next to Swope you will find some pink rhododendrons 
-with an orange traffic cone next to them. Look under the traffic cone and remember that 
-a good bioinformagician always abides by the Ft. Lauderdale Agreement and shares their data/booty.";
+my $theTreasure = "You've found my treasure! Quietly stand up, head out of the classroom, go to the lab and find the plate centrifuge. Turn around and enter the room across from the centrifuge. Look for a drawer. The X marks the spot!";
 
 # Create locations
 my @places = (
