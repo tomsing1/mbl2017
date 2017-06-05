@@ -35,7 +35,7 @@ while read iuser ipasswd; do
     echo ".libPaths( c( .libPaths(), '/home/ubuntu/R-libs') )" >> /home/${iuser}/.Rprofile
     
     # copy example directory structure
-    cp -R /vagrant/data-shell /home/${iuser}/
+    cp -R /vagrant/data-shell/* /home/${iuser}/
     
     # create treasure hunt directories for each user
     mkdir -p /home/${iuser}/treasure
